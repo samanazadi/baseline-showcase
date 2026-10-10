@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>scrollbar-color</title>
+    <style>
+        body {
+            display: flex;
+            gap: 200px;
+        }
+
+        div {
+            height: 250px;
+            width: 350px;
+            overflow: auto;
+            border: 1px solid #ccc;
+        }
+
+        div::after {
+            content: "";
+            display: block;
+            height: 750px;
+        }
+
+        .colored {
+            scrollbar-color: #7c3aed #ede9fe;
+        }
+
+        .auto {
+            scrollbar-color: auto;
+        }
+    </style>
+</head>
+<body>
+<section>
+    <h2>#7c3aed #ede9fe</h2>
+    <div class="colored"></div>
+</section>
+<section>
+    <h2>auto</h2>
+    <div class="auto"></div>
+</section>
+</body>
+</html>

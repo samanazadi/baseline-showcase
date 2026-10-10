@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>zoom</title>
+    <style>
+        body {
+            display: flex;
+            gap: 100px;
+            font-family: sans-serif;
+        }
+
+        .box {
+            width: 150px;
+            padding: 10px;
+            border: 1px solid #7c3aed;
+            background: #ede9fe;
+        }
+
+        .small {
+            zoom: 0.5;
+        }
+
+        .large {
+            zoom: 200%;
+        }
+    </style>
+</head>
+<body>
+<section>
+    <h2>zoom: 0.5 (50%)</h2>
+    <div class="box small">Hello, zoom!</div>
+</section>
+<section>
+    <h2>zoom: 1 (100%)</h2>
+    <div class="box">Hello, zoom!</div>
+</section>
+<section>
+    <h2>zoom: 2 (200%)</h2>
+    <div class="box large">Hello, zoom!</div>
+</section>
+</body>
+</html>

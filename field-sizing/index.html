@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>field-sizing</title>
+    <style>
+        body {
+            display: flex;
+            gap: 100px;
+            font-family: sans-serif;
+        }
+
+        input, textarea {
+            min-width: 100px;
+            max-width: 300px;
+            padding: 5px;
+            border: 1px solid #7c3aed;
+            background: #ede9fe;
+        }
+
+        .content {
+            field-sizing: content;
+        }
+
+        .fixed {
+            field-sizing: fixed;
+        }
+    </style>
+</head>
+<body>
+<section>
+    <h2>field-sizing: fixed</h2>
+    <p><input class="fixed" placeholder="Type here..."></p>
+    <textarea class="fixed" placeholder="Type here..."></textarea>
+</section>
+<section>
+    <h2>field-sizing: content</h2>
+    <p><input class="content" placeholder="Type here..."></p>
+    <textarea class="content" placeholder="Type here..."></textarea>
+</section>
+</body>
+</html>

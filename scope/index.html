@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>@scope</title>
+    <style>
+        :root {
+            --scope-root-bg: #a78bfa;
+            --scope-p-bg: #fde047;
+        }
+
+        body {
+            font-family: sans-serif;
+            padding: 1rem;
+            font-weight: bold;
+        }
+
+        main {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        section {
+            padding: 1rem;
+            border-radius: 12px;
+            background: #f8fafc;
+            box-shadow: 0 4px 12px rgb(0 0 0 / 0.15);
+            max-width: 600px;
+        }
+
+        div {
+            background: #fff;
+            max-width: 550px;
+        }
+
+        div, p {
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        @scope (.outer-root) {
+            :scope {
+                background: var(--scope-root-bg);
+            }
+            p {
+                background: var(--scope-p-bg);
+            }
+        }
+
+        @scope (.outer-donut) to (.inner-donut) {
+            :scope {
+                background: var(--scope-root-bg);
+            }
+            p {
+                background: var(--scope-p-bg);
+            }
+        }
+
+        @scope (.inner-proximity) {
+            p {
+                background: #5eead4;
+            }
+        }
+
+        @scope (.outer-proximity) {
+            :scope {
+                background: var(--scope-root-bg);
+            }
+            p {
+                background: var(--scope-p-bg);
+            }
+        }
+    </style>
+</head>
+<body>
+<main>
+    <section>
+        <h2>Scope Root Only</h2>
+        <p>Outside the divs: not in scope</p>
+        <div class="outer-root">
+            <p>Between the divs: in scope</p>
+            <div class="inner-root">
+                <p>Inside the inner div: still in scope</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Inline Scope</h2>
+        <p>Outside the divs: not in scope</p>
+        <div class="outer-inline">
+            <style>
+                @scope {
+                    :scope {
+                        background: var(--scope-root-bg);
+                    }
+                    p {
+                        background: var(--scope-p-bg);
+                    }
+                }
+            </style>
+            <p>Between the divs: in scope</p>
+            <div class="inner-inline">
+                <p>Inside the inner div: still in scope</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Donut Scope</h2>
+        <p>Outside the divs: not in scope</p>
+        <div class="outer-donut">
+            <p>Between the divs: in scope</p>
+            <div class="inner-donut">
+                <p>Inside the inner div: the donut hole, excluded</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Scoping Proximity</h2>
+        <p>Outside the divs: not in scope</p>
+        <div class="outer-proximity">
+            <p>Between the divs: only the outer scope applies</p>
+            <div class="inner-proximity">
+                <p>Inside the inner div: both scopes match, the closer root wins</p>
+            </div>
+        </div>
+    </section>
+</main>
+</body>
+</html>
